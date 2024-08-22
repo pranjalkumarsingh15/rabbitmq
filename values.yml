@@ -1,0 +1,20 @@
+---
+rabbitmq:
+  nameOverride: "rabbitmq"
+  auth:
+    username: admin
+    existingPasswordSecret: "rabbitmq-secret"
+    erlangCookie: "PKXlqRIGMwluQUK4XqavA3UHJNyRaogO"
+  replicaCount: 2
+  persistence:
+    enabled: true
+    storageClass: "ebs-csi-sc"
+    accessModes:
+      - ReadWriteOnce
+    size: 20Gi
+  service:
+    type: ClusterIP
+  volumePermissions:
+    enabled: true
+  externalSecrets:
+    secretName: "rabbitmq"
